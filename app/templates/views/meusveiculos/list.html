@@ -29,7 +29,7 @@
             <div class="item item-result placa" ng-repeat="m in meusveiculos.dados">
                 <a ng-click="remove($index)" class="close-placa"><i class="ion-android-cancel"></i></a>
                 <div class="placa_top" style="text-transform: uppercase;">{{m.n}}</div>
-                <a ng-click="consultar(m)">
+                <a ng-click="consultarVeiculo(m)">
                     <div class="placa_num" style="text-transform: uppercase;">{{m.p}}</div>
                 </a>
             </div>

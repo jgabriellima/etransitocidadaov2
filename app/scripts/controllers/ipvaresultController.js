@@ -6,8 +6,8 @@
  * # ipvaresultController
  */
 angular.module('Etransitocidadao')
-    .controller('ipvaresultController', function($scope, $rootScope, API, $location, $localstorage, Alerts,
-        $ionicLoading) {
+    .controller('ipvaresultController', function($scope, $rootScope, $cordovaSocialSharing, $cordovaClipboard,
+        API, $location, $localstorage, Alerts, $ionicLoading) {
         /**/
         $scope.q = {};
         $scope.init = function() {
@@ -20,7 +20,10 @@ angular.module('Etransitocidadao')
             } catch (e) {
                 $scope.debitos = false;
             }
-            /*console.log("init ", $scope.debitos, $scope.result);*/
+            try {
+                $scope.result.dtcreate = new Date();
+                $rootScope.insertHistory($scope.result);
+            } catch (e) {}
         };
 
         $rootScope.$on('consultaipvaresult', function(event, args) {
@@ -62,7 +65,15 @@ angular.module('Etransitocidadao')
                 .copy($scope.result.dae.codigobarra)
                 .then(function() {
                     Alerts.default($scope, "Sucesso!", "Código de barras copiado com sucesso!", "Ok", function() {});
-                }, function() {
+                }, function() {});
+        };
+        $scope.enviarcodigobarras = function() {
+            $cordovaSocialSharing
+                .share("eTrânsitoCidadão\n\n Proprietário: " + $scope.result.Proprietario + "\nPlaca: " + $scope.result.placa + "\n RENAVAM: " + $scope.result.renavam + "\n Código de Barras para pagamento: " + $scope.result.dae.codigobarra + "\n\n eTrânsitoCidadão :: Huddle3", "eTrânsitoCidadão - Código de Barras para Pagamento - Placa: " + $scope.result.placa, [], "")
+                .then(function(result) {
+                    // Alerts.default($scope, "Sucesso!", "Código de barras enviado com sucesso!", "Ok", function() {});
+                }, function(err) {
+                    Alerts.default($scope, "Ops!", "Não foi possível enviar o código de barras!", "Ok", function() {});
                 });
-        }
+        };
     });

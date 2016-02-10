@@ -7,7 +7,11 @@
  */
 angular.module('Etransitocidadao')
     .controller('newsController', function($scope, tweets, config, $localstorage) {
-        $scope.feed = $localstorage.getObject("newsetransitov2");
+
+        $scope.feed = $localstorage.getObject("newsetransitov2").tweets !== undefined ? $localstorage.getObject("newsetransitov2") : {
+            tweets: []
+        };
+
         $scope.load = function() {
             tweets.get({
                 widgetId: config.tweet_id_blitzbelem

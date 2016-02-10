@@ -50,12 +50,6 @@ angular.module('Etransitocidadao')
             $scope.info_active = true;
         };
 
-        $scope.msghistory = "Os dados de histórico de busca são armazenados apenas localmente no seu dispositivo, sua limpeza não interfere em nada no serviço oferecido.";
-        $scope.info_active_history = false;
-        /**/
-        $scope.showinfohistory = function() {
-            $scope.info_active_history = true;
-        };
         $scope.goHistory = function() {
             $location.path('app/ipvahistory');
         };

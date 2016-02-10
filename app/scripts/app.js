@@ -61,7 +61,7 @@ angular.module('Etransitocidadao', ['ionic', 'ngCordova', 'ngResource', 'ng-walk
                 views: {
                     'viewContent': {
                         templateUrl: 'templates/views/ipva/history.html',
-                        controller: 'ipvaController'
+                        controller: 'ipvahistoryController'
                     }
                 }
             })

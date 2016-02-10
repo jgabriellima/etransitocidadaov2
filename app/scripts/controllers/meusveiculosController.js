@@ -17,7 +17,7 @@ angular.module('Etransitocidadao')
         $scope.goAdd = function() {
             $location.path('app/meusveiculos_form');
         };
-        $scope.consultar = function(query) {
+        $rootScope.consultarVeiculo = function(query) {
             $ionicLoading.show({
                 template: 'Processando... Aguarde!'
             });
@@ -35,8 +35,7 @@ angular.module('Etransitocidadao')
                                 $localstorage.setObject('ipvaresult', res.results);
                                 $location.path("app/ipvaresult");
                             } else {
-                                Alerts.default($scope, "Ops. Que chato!", "Desculpe-nos, mas os serviços da <a href='https://app.sefa.pa.gov.br/'>SEFA-PA</a> estão fora do ar. Não somos respnsáveis por isso. mas sentimos muito por você.", "Ok", function() {
-                                });
+                                Alerts.default($scope, "Ops. Que chato!", "Desculpe-nos, mas os serviços da <a href='https://app.sefa.pa.gov.br/'>SEFA-PA</a> estão fora do ar. Não somos respnsáveis por isso. mas sentimos muito por você.", "Ok", function() {});
                             }
                         }
                     }
@@ -78,7 +77,7 @@ angular.module('Etransitocidadao')
         $scope.remove = function(index) {
             Alerts.confirm($scope, "Atenção", "Você realmente deseja excluir este registro?", [{
                 text: '<b>Sim</b>',
-                type: 'btn btn-default',
+                type: 'btn btn-green',
                 onTap: function(e) {
                     $scope.meusveiculos.dados.splice(index, 1);
                     $localstorage.setObject("meusveiculos", $scope.meusveiculos);
