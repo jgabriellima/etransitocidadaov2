@@ -15,7 +15,7 @@
         </div>
         <div class="list list-inset" style="background-color: rgba(255, 255, 255, 0);margin-top: 0;">
             <div class="item item-result placa" ng-repeat="m in h.dados">
-                <div class="placa_top" style="text-transform: uppercase;">{{m.dtcreate|date:'dd-mm-yyyy HH:mm:ss'}}</div>
+                <div class="placa_top" style="text-transform: uppercase;">{{m.dtcreate|date:'dd/MM/yyyy HH:mm:ss'}}</div>
                 <a ng-click="consultar(m)">
                     <div class="placa_num" style="text-transform: uppercase;">{{m.placa}}</div>
                 </a>

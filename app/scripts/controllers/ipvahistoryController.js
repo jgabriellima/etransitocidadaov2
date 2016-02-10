@@ -45,17 +45,21 @@ angular.module('Etransitocidadao')
             query.c = obj.cpfCnpj;
             query.r = obj.renavam;
             query.p = obj.placa;
-            // $rootScope.consultarVeiculo(query);
-            $localstorage.setObject('ipvaresult', obj);
+            try {
+                $localstorage.setObject('ipvaresult', obj);
+            } catch (E) {}
             $rootScope.$broadcast('consultaipvaresult');
             $location.path("app/ipvaresult");
         };
+        
         $rootScope.insertHistory = function(obj) {
             var h = $localstorage.getObject("h").dados !== undefined ? $localstorage.getObject("h") : {
                 dados: []
             };
             h.dados.push(obj);
-            $localstorage.setObject("h", h);
+            try {
+                $localstorage.setObject("h", h);
+            } catch (E) {}
             $rootScope.$broadcast('reloadh');
         };
 

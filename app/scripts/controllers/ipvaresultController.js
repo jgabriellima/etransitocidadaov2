@@ -22,12 +22,12 @@ angular.module('Etransitocidadao')
             }
             try {
                 $scope.result.dtcreate = new Date();
-                $rootScope.insertHistory($scope.result);
             } catch (e) {}
         };
 
         $rootScope.$on('consultaipvaresult', function(event, args) {
             $scope.init();
+            $rootScope.insertHistory($scope.result);
         });
 
         $scope.novaconsulta = function() {
