@@ -1,0 +1,39 @@
+<style>
+</style>
+<ion-view title="Meus Veículos">
+    <walkthrough id="info" walkthrough-type="transparency" focus-element-id="btn_add" icon="arrow" main-caption="{{msg}}" icon-padding-left="0" icon-padding-top="30" is-active="info_active" force-caption-location="BOTTOM">
+    </walkthrough>
+    <ion-nav-buttons side="right">
+        <a ng-click="goAdd()" id="btn_add" class="button" style="border: 0; background-color: white; font-size: 2em;">
+            <i class="ion-ios-plus-outline"></i>
+        </a>
+        <button class="button " ng-click="showinfo()" style="border: 0; background-color: white; font-size: 2em;color: #38ba96;">
+            <i class="ion-information-circled"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header bg-color" ng-init="load()">
+        <div style="margin-bottom: 2px; margin-top: 15px; left: 50%; width: 60%; margin-left: 20%;" align="center">
+            <p align="center">
+                Cadastre seu veículo abaixo para uma busca imediata!
+            </p>
+            <img style="width: 50%;height: 2px;" src="images/header.png" alt="">
+        </div>
+        <div ng-show="meusveiculos.dados==0" style="text-align: center;margin-top: 100px;font-size: 1.2em;">Nenhum veículo cadastrado!
+            <div align="center" style="margin-top:20px">
+                <a ng-click="goAdd()" id="btn_add" class="button" style="border: 0; background-color: rgba(255, 255, 255, 0); font-size: 1.3em;">
+                    <i class="ion-ios-plus-outline"></i> Adicionar
+                </a>
+            </div>
+        </div>
+        <div class="list list-inset" style="background-color: rgba(255, 255, 255, 0);margin-top: 0;">
+            <div class="item item-result placa" ng-repeat="m in meusveiculos.dados">
+                <a ng-click="remove($index)" class="close-placa"><i class="ion-android-cancel"></i></a>
+                <div class="placa_top" style="text-transform: uppercase;">{{m.n}}</div>
+                <a ng-click="consultar(m)">
+                    <div class="placa_num" style="text-transform: uppercase;">{{m.p}}</div>
+                </a>
+            </div>
+        </div>
+        <div style="height:50px"></div>
+    </ion-content>
+</ion-view>

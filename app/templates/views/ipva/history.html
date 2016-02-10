@@ -1,0 +1,27 @@
+<ion-view title="Histórico de Consultas">
+    <walkthrough id="info_historico" walkthrough-type="transparency" focus-element-id="btn_clean_historico" icon="single_tap" main-caption="{{msghistory}}" icon-padding-left="0" icon-padding-top="40" is-active="info_active_history">
+    </walkthrough>
+    <ion-nav-buttons side="right">
+        <button class="button " ng-click="showinfohistory()" style="border: 0; background-color: white; font-size: 2em;color: #38ba96;">
+            <i class="ion-information-circled"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header bg-color">
+        <div style="height:25px"></div>
+        <div class="alternative-actions" align="center">
+            <a id="btn_clean_historico" class="forgot-password button button-small button-clear" style="color: rgb(92, 92, 92);font-size: 1.3em;cursor:pointer"> <i class="ion-ios-close-outline" style="margin-right:4px"></i> Limpar Histórico</a>
+        </div>
+        <div class="list list-inset" style="background-color: rgba(255, 255, 255, 0);">
+            <a class="item item-result placa">
+                <div class="placa_top">Meu carro</div>
+                <div class="placa_num">OTP-3149</div>
+            </a>
+            <a class="item item-result placa">
+                <div class="placa_top">Carro da Mamae</div>
+                <div class="placa_num">OTP-3149</div>
+            </a>
+        </div>
+        
+        <div style="height:50px"></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,58 @@
+<style>
+.scrollcenter {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+}
+
+.input-label {
+    text-align: left;
+}
+</style>
+<ion-view title="Adicionar Novo Veículo">
+    <ion-content class="has-header bg-color">
+        <div style="padding: 25px;margin-top: 20px;">
+            <div style="margin-bottom: 2px; margin-top: -15px; left: 50%; width: 80%; margin-left: 10%;" align="center">
+                <p align="center">
+                    Insira corretamente os dados do veículo que deseja cadastrar!
+                </p>
+                <img style="width: 50%;height: 2px;" src="images/header.png" alt="">
+            </div>
+            <div class="list">
+                <form id="formveiculo" ng-submit="salvar()">
+                    <label class="item item-input">
+                        <span class="input-label">CPF</span>
+                        <input id="cpf" ng-model="query.c" title="CPF" type="text" onkeypress="mascara(this,cpf_mask)" onkeyup="mascara(this,cpf_mask)" maxlength="14" data-req="true" data-validation="cpf">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">RENAVAM</span>
+                        <input id="renavam" ng-model="query.r" title="RENAVAM" maxlength="9" oninput="maxLengthCheck(this)" ng-minlength="9" type="number" data-req="true">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">PLACA</span>
+                        <input id="placa" ng-model="query.p" title="PLACA" maxlength="7" oninput="maxLengthCheck(this)" ng-minlength="7" type="text" style="text-transform: uppercase;" data-req="true">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">NOME</span>
+                        <input id="nome" ng-model="query.n" title="NOME" type="text" style="text-transform: uppercase;" data-req="true">
+                    </label>
+                    <li class="item item-toggle">
+                        Receber Notificações:
+                        <label class="toggle toggle-balanced">
+                            <input type="checkbox">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <p align="center" style="font-size: .8em;">
+                        Esses dados ficaram armazenados apenas em seu dispositivo, a fim de facilitar suas futuras consultas.
+                    </p>
+                    <button type="submit" class="login button button-block " style="margin-bottom: 0px;"><i class="ion-ios-search-strong" style="margin-right: 10px;"></i>Adicionar veículo</button>
+                </form>
+            </div>
+            <div style="height:100px"></div>
+        </div>
+    </ion-content>
+</ion-view>

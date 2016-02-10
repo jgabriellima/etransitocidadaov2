@@ -1,0 +1,55 @@
+<style>
+a.item-content {
+    background-color: #38BA96 !important;
+    color: white !important;
+    font-weight: 400;
+    font-size: 1em;
+    text-align: center;
+}
+
+.scroll {
+    height: 100%
+}
+</style>
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable-custom">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="viewContent">
+        </ion-nav-view>
+    </ion-side-menu-content>
+    <!-- Left menu -->
+    <ion-side-menu side="left" class="side-menu">
+        <ion-content style="background-color:#38BA96;">
+            <ion-list style="background-color:#38BA96;">
+                <ion-item menu-close href="" style="border-color: #38ba96;">
+                    <div style="height:8px"></div>
+                </ion-item>
+                <ion-item menu-close href="#/app/meusveiculos" style="border-color: #38ba96;">
+                    <span class="span_item">Meus Veículos</span>
+                </ion-item>
+                <ion-item menu-close href="#/app/ipva" style="border-color: #38ba96;">
+                    <span class="span_item">Consulta ao IPVA</span>
+                </ion-item>
+                <ion-item menu-close href="#/app/news" style="border-color: #38ba96;">
+                    <span class="span_item">@Belémtransito <br> @BelémBlitz</span>
+                </ion-item>
+                <ion-item menu-close href="#/app/about" style="border-color: #38ba96;">
+                    Sobre a Huddle3
+                </ion-item>
+            </ion-list>
+            <div style="background-color: #38ba96;position: absolute;width: 100%;z-index: 9999;bottom: 0px;" align="center">
+                <a href="http://huddle3.com">
+                    <img src="images/huddle3menu.png" width="100" alt="">
+                </a>
+            </div>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

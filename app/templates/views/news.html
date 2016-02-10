@@ -1,0 +1,23 @@
+<ion-view style="" title="Notícias" ng-init="load()">
+    <ion-content class="has-header bg-color" overflow-scroll="true" padding="true">
+        <ion-refresher on-refresh="load()" pulling-text="Carregando tweets..."></ion-refresher>
+        <p ng-hide='feed' align="center" style="font-weight: bold;">Carregando tweets...</p>
+        <div class="list card" ng-repeat='tweet in feed.tweets'>
+            <div class="item item-avatar">
+                <img src="{{tweet.author.avatar}}">
+                <h2>{{tweet.author.nickName}}</h2>
+                <p style="font-size: 0.7em;">{{tweet.time | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="item">
+                <p style="font-size: 1em;white-space: normal;" align="left" ng-bind-html="tweet.text|linkify"></p>
+            </div>
+            <div class="item item-icon-left assertive" href="#" style="left: -20px;">
+                <div class="timeline-stats" style="color: rgb(245, 191, 73);">
+                    <i class="ion-heart" ></i> {{tweet.favorites}}
+                    <span class="pos-absolute-right"><i class="ion-ios-clock"></i> {{tweet.time2}}</span>
+                </div>
+            </div>
+        </div>
+        <div style="height:100px"></div>
+    </ion-content>
+</ion-view>

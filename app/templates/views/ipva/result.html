@@ -1,0 +1,124 @@
+<style>
+.item-result {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.item {
+    background-color: rgba(255, 255, 255, 0.60);
+}
+
+.item p {
+    font-weight: bold;
+}
+</style>
+<ion-view title="Resultado da Consulta">
+    <ion-content class="has-header bg-color">
+        <div style="padding-top: 0px; padding-left: 10px; padding-right: 10px;">
+            <div class="list list-inset" style="background-color: rgba(255, 255, 255, 0);" ng-init="init()">
+                <div style="margin-bottom: 10px;margin-top: 10px;" align="center">
+                    <div style="font-weight:bold">Dados Gerais</div>
+                    <img style="width: 50%;" src="images/header.png" alt="">
+                </div>
+                <a class="item item-result">
+                    <p>Proprietário:</p>
+                    <h2 style="white-space: normal;">{{result.Proprietario}}</h2>
+                </a>
+                <a class="item item-result">
+                    <p>CPF:</p>
+                    <h2>{{result.cpfCnpj}}</h2>
+                </a>
+                <div style="margin-bottom: 10px;margin-top: 10px;" align="center">
+                    <div style="font-weight:bold">Dados do Veículo</div>
+                    <img style="width: 50%;" src="images/header.png" alt="">
+                </div>
+                <a class="item item-result">
+                    <p>Placa:</p>
+                    <h2 style="text-transform: uppercase;">{{result.placa}}</h2>
+                </a>
+                <a class="item item-result">
+                    <p>Chassi:</p>
+                    <h2>{{result.Chassi}}</h2>
+                </a>
+                <a class="item item-result">
+                    <p>Renavam:</p>
+                    <h2>{{result.renavam}}</h2>
+                </a>
+                <a class="item item-result">
+                    <p>Ano:</p>
+                    <h2>{{result.Ano}}</h2>
+                </a>
+                <a class="item item-result">
+                    <p>Ano de Fabricação:</p>
+                    <h2>{{result.AnoFab}}</h2>
+                </a>
+                <div style="margin-bottom: 10px;margin-top: 10px;" align="center">
+                    <div style="font-weight:bold">Dados de IPVA</div>
+                    <img style="width: 50%;" src="images/header.png" alt="">
+                </div>
+                <a class="item item-result" ng-hide="debitos">
+                    <p align="center">Você não possui débitos para este veículo!</p>
+                </a>
+                <div ng-show="debitos">
+                    <a class="item item-result">
+                        <p>Taxa:</p>
+                        <h2>{{result.dae.Taxa}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Principal:</p>
+                        <h2>{{result.dae.Principal}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Correção Monetária:</p>
+                        <h2>{{result.dae.CorrecaoMoneteria}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Juros:</p>
+                        <h2>{{result.dae.Juros}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Multa:</p>
+                        <h2>{{result.dae.Multa}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Honorários:</p>
+                        <h2>{{result.dae.Honorarios}}</h2>
+                    </a>
+                    <a class="item item-result">
+                        <p>Total:</p>
+                        <h2>{{result.dae.Total}}</h2>
+                    </a>
+                    <div style="margin-bottom: 10px;margin-top: 10px;" align="center">
+                        <div style="font-weight:bold">Código para Pagamento</div>
+                        <img style="width: 50%;" src="images/header.png" alt="">
+                    </div>
+                     <p style="font-size:.8em">Escolha uma data dentro do mẽs corrente</p>
+                </div>
+                <a class="item item-result" ng-show="debitos">
+                    <p style="white-space: normal;" align="center">
+                        {{result.dae.codigobarra}}</p>
+                    <button type="submit" class="login button button-block ion-ios-copy" style="margin-bottom: 0px;">  Copiar</button>
+                    <button type="submit" class="login button button-block ion-android-share-alt" style="margin-bottom: 0px;">  E-mail</button>
+                </a>
+            </div>
+            <div style="margin-bottom: 10px;margin-top: 10px;" align="center">
+                <div style="font-weight:bold">Data de pagamento</div>
+                <p style="font-size:.8em">Escolha uma data dentro do mẽs corrente</p>
+                <img style="width: 50%;" src="images/header.png" alt="">
+            </div>
+            <div class="list list-inset" style="background-color: rgba(255, 255, 255, 0.01);">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Verificar com uma nova para pagamento</span>
+                    <input type="date" placeholder="Escolher nova data" ng-model="q.novadata" style="text-align: center;">
+                </label>
+                <button class="login button button-block" ng-click="novaconsulta()">Consultar</button>
+            </div>
+            <div style="margin-top: 50px;" align="center">
+                <a href="http://huddle3.com">
+                    <img src="images/huddle3.png" alt="" width="80">
+                </a>
+            </div>
+            <div style="height:30px"></div>
+        </div>
+    </ion-content>
+</ion-view>

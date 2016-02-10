@@ -1,0 +1,65 @@
+<style>
+.scrollcenter {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+}
+
+.input-label {
+    text-align: left;
+}
+</style>
+<ion-view title="Consulta ao IPVA">
+    <walkthrough id="info_consulta_ipva" walkthrough-type="transparency" focus-element-id="btn_consulta" icon="single_tap" main-caption="{{msg}}" icon-padding-left="0" icon-padding-top="40" is-active="info_active">
+    </walkthrough>
+    <ion-nav-buttons side="right">
+        <button class="button " ng-click="showinfo()" style="border: 0; background-color: white; font-size: 2em;color: #38ba96;">
+            <i class="ion-information-circled"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header bg-color" overflow-scroll="false" scroll="false" style="height: 100%;display: table !important;width: 100% !important;height: 100% !important;padding: 20px;">
+        <div class="scrollcenter">
+            <div class="row row-center">
+                <div class="col col-center">
+                    <i class="ion-android-car" style="font-size:3em;color: rgb(245, 191, 73);"></i>
+                    <p>Consulta ao IPVA</p>
+                    <div class="list">
+                        <form id="search" ng-submit="buscar(query,true)">
+                            <label class="item item-input">
+                                <span class="input-label">CPF</span>
+                                <input id="cpf" ng-model="query.c" title="CPF" type="text" onkeypress="mascara(this,cpf_mask)" onkeyup="mascara(this,cpf_mask)" maxlength="14" data-req="true" data-validation="cpf">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">RENAVAM</span>
+                                <input id="renavam" ng-model="query.r" title="RENAVAM" maxlength="9" type="number" data-req="true" data-validation"renavam">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">PLACA</span>
+                                <input id="placa" ng-model="query.p" title="PLACA" maxlength="8" type="text" data-validation="placa" data-req="true" style="text-transform: uppercase;">
+                            </label>
+                            <label class="item item-input item-select">
+                                <span class="input-label">UF</span>
+                                <select id="uf" style="text-transform: uppercase;">
+                                    <option value="">Selecione</option>
+                                    <option value="PA">PA</option>
+                                </select>
+                            </label>
+                            <button id="btn_consulta" type="submit" class="login button button-block " style="margin-bottom: 0px;"><i class="ion-ios-search-strong" style="margin-right: 10px;"></i>Buscar veículo</button>
+                        </form>
+                    </div>
+                    <div class="alternative-actions" align="center">
+                        <a class="forgot-password button button-small button-clear ion-android-list" ng-click="goHistory()" style="color: rgb(92, 92, 92);font-size: 1em;cursor:pointer">
+                                Histórico de buscas</a>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="http://huddle3.com">
+                            <img src="images/huddle3.png" alt="" width="80">
+                        </a>
+                    </div>
+                    <div style="height:50px"></div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
