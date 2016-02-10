@@ -40,4 +40,12 @@ angular.module('Etransitocidadao')
                 });
             });
         };
+
+        $scope.msg_news = "As notícias são provenientes do twitter - @belemtransito e @belemtblitz. Caso você tenha alguma outra sugestão, por favor contate-nos em contato@huddle3.com";
+        $scope.info_active_news = false;
+        /**/
+        /**/
+        $scope.showinfonews = function() {
+            $scope.info_active_news = true;
+        };
     });
