@@ -1,0 +1,21 @@
+keytool -genkey -v -keystore etransito.keystore -alias vedikey -keyalg RSA -keysize 2048 -validity 10000
+
+senha: etransito
+
+gulp --build && ionic build --release android
+
+cp /home/stark/MEGAsync/VEDi/vedimobile/platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk /home/stark/MEGAsync/VEDi/vedimobile/
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vedikey.keystore android-armv7-release-unsigned.apk vedikey
+
+/path/to/Android/sdk/build-tools/VERSION/zipalign
+
+zipalign -v 4 android-armv7-release-unsigned.apk VEDiMobile.apk
+
+adb install VEDiMobile.apk
+
+-----
+Senha certificado iOS: vedi123ios
+
+
+gulp --build && ionic build --release android && cp /home/stark/MEGAsync/etransito/etransitocidadao/platforms/android/build/outputs/apk/android-release-unsigned.apk /home/stark/MEGAsync/etransito/etransitocidadao/ && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vedikey.keystore android-release-unsigned.apk vedikey && zipalign -v 4 android-release-unsigned.apk eTransitoCidadao.apk && adb install eTransitoCidadao.apk
