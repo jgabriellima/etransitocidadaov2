@@ -23,11 +23,11 @@ angular.module('Etransitocidadao')
             try {
                 $scope.result.dtcreate = new Date();
             } catch (e) {}
+
         };
 
         $rootScope.$on('consultaipvaresult', function(event, args) {
             $scope.init();
-            $rootScope.insertHistory($scope.result);
         });
 
         $scope.novaconsulta = function() {
@@ -47,7 +47,13 @@ angular.module('Etransitocidadao')
                             Alerts.default($scope, "Ops!", res.results.msg, "Ok", function() {});
                         } else {
                             if (sefaVerification(res.results)) {
-                                $localstorage.setObject('ipvaresult', res.results);
+                                try {
+                                    res.results.dae.codigobarra = res.results.dae.codigobarra.slice(0, 51);
+                                } catch (E) {}
+                                try {
+                                    $localstorage.setObject('ipvaresult', res.results);
+                                } catch (E) {}
+                                $rootScope.insertHistory(res.results);
                                 $rootScope.$broadcast('consultaipvaresult');
                                 $location.path("app/ipvaresult");
                             } else {

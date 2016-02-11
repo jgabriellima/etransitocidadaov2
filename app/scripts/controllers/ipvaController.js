@@ -7,7 +7,22 @@
  */
 angular.module('Etransitocidadao')
     .controller('ipvaController', function($scope, $rootScope, $location, $localstorage, API, Alerts, $ionicLoading) {
-        $scope.query = {}
+        $scope.query = {};
+
+
+        $rootScope.insertHistory = function(obj) {
+            obj.dtcreate = new Date();
+            var h = $localstorage.getObject("h").dados !== undefined ? $localstorage.getObject("h") : {
+                dados: []
+            };
+            h.dados.push(obj);
+            try {
+                $localstorage.setObject("h", h);
+            } catch (E) {}
+            $rootScope.$broadcast('reloadh');
+        };
+
+
 
         $rootScope.buscar = function(q, flag) {
             var vf = vform("form#search");
@@ -28,7 +43,13 @@ angular.module('Etransitocidadao')
                                 Alerts.default($scope, "Ops!", res.results.msg, "Ok", function() {});
                             } else {
                                 if (sefaVerification(res.results)) {
-                                    $localstorage.setObject('ipvaresult', res.results);
+                                    try {
+                                        res.results.dae.codigobarra = res.results.dae.codigobarra.slice(0, 51);
+                                    } catch (E) {}
+                                    try {
+                                        $localstorage.setObject('ipvaresult', res.results);
+                                    } catch (E) {}
+                                    $rootScope.insertHistory(res.results);
                                     $rootScope.$broadcast('consultaipvaresult');
                                     $location.path("app/ipvaresult");
                                 } else {

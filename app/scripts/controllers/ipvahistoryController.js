@@ -53,6 +53,7 @@ angular.module('Etransitocidadao')
         };
         
         $rootScope.insertHistory = function(obj) {
+            obj.dtcreate = new Date();
             var h = $localstorage.getObject("h").dados !== undefined ? $localstorage.getObject("h") : {
                 dados: []
             };

@@ -32,7 +32,14 @@ angular.module('Etransitocidadao')
                             Alerts.default($scope, "Ops!", res.results.msg, "Ok", function() {});
                         } else {
                             if (sefaVerification(res.results)) {
-                                $localstorage.setObject('ipvaresult', res.results);
+                                try {
+                                    res.results.dae.codigobarra = res.results.dae.codigobarra.slice(0, 51);
+                                } catch (E) {}
+                                try {
+                                    $localstorage.setObject('ipvaresult', res.results);
+                                } catch (E) {}
+                                $rootScope.insertHistory(res.results);
+                                $rootScope.$broadcast('consultaipvaresult');
                                 $location.path("app/ipvaresult");
                             } else {
                                 Alerts.default($scope, "Ops. Que chato!", "Desculpe-nos, mas os serviços da <a href='https://app.sefa.pa.gov.br/'>SEFA-PA</a> estão fora do ar. Não somos respnsáveis por isso. mas sentimos muito por você.", "Ok", function() {});
